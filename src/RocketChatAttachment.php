@@ -58,6 +58,9 @@ class RocketChatAttachment
     /** @var array An array of Attachment Field Objects. */
     protected $fields = [];
 
+    /** @var array An array of Attachment Actions Objects. */
+    protected $actions = [];
+
     /**
      * RocketChatAttachment constructor.
      *
@@ -286,6 +289,17 @@ class RocketChatAttachment
     }
 
     /**
+     * @param array $actions
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
+     */
+    public function actions(array $actions): self
+    {
+        $this->actions = $actions;
+
+        return $this;
+    }
+
+    /**
      * Get an array representation of the RocketChatAttachment.
      *
      * @return array
@@ -309,6 +323,7 @@ class RocketChatAttachment
             'audio_url' => $this->audioUrl,
             'video_url' => $this->videoUrl,
             'fields' => $this->fields,
+            'actions' => $this->actions,
         ]);
     }
 
